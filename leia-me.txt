@@ -1,0 +1,4 @@
+npx create-expo-app MeuProjeto
+
+limpar o projeto =  tirar as pastas padroes que vem no projeto quando baixado novo
+npm run reset-project
