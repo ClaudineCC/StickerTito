@@ -10,7 +10,7 @@ import React from "react";
     
         <View  style={styles.container}>
      
-      <Link href="/about" style={styles.button}> 
+      <Link href="/" style={styles.button}> 
       Go to about screen 
       </Link>
     </View>
