@@ -14,10 +14,14 @@ npm start ou npx expo start - ambos iniciam/startam  o projeto
 
 
 
-<props>  passam estilos, mais acessivel
+<props>  passam estilos, mais acessivel . ex <link href="">
 
 
 EXTENSÕES: A Prettier Code-formater - tras regras de formatação
+
+
+dependencias para imagem:
+ npx expo install expo-image
 
 
 
