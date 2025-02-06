@@ -6,9 +6,7 @@ import { Link } from "expo-router";
   return (
     <View  style={styles.container}>
       <Text style={styles.text}>Claudine</Text>
-      <Link href="/about" style={styles.button}> 
-      Go to about screen 
-      </Link>
+      <Link href="/about" style={styles.button}> Go to about screen </Link>
     </View>
   );
 }
