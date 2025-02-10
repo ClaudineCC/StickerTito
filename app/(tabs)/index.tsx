@@ -4,10 +4,12 @@ import { Text, View, StyleSheet } from "react-native";
 
 //import de componentes
 import ImageViewer from "@/components/ImageViewer";
+import Button from "@/components/Button";
 
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
 
+//refatoração - melhoramento no codigo. OS comentarios sao as primeiras inserções
 function Index() {
   return (
     <View style={styles.container}>
@@ -15,6 +17,15 @@ function Index() {
         <ImageViewer imgSource={PlaceholderImage} />
         {/* <Image source={PlaceholderImage} style={styles.image}/> */}
       </View>
+
+
+      <View style={styles.footerContainer}> 
+        {/* <View> */}
+      <Button label="Choose a photo"/> 
+      <Button label="Use this photo"/>
+      </View>
+
+
       
         {/* <Text style={styles.text}>HOME</Text> */}
         {/* <Link href="/about" style={styles.button}>         
@@ -47,6 +58,11 @@ const styles = StyleSheet.create({
   //   textDecorationLine: "underline",
   //   color: "#fff",
   // },
+  footerContainer:{
+    flex : 1/3,
+    alignItems: "center",
+
+  },
  
 });
 
