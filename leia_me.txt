@@ -126,3 +126,10 @@ npm install react-native-web-swiper@latest    //latest tras a ultima versao
 
 
 
+// imagens react-native
+npx expo install expo-image
+
+ou sem baixar dependencia , chamar direto na "tag" image
+<image require={assets/image/nomedaimage.png}
+
+

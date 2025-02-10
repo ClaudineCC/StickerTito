@@ -1,8 +1,8 @@
 import { Text, View, StyleSheet } from "react-native";
-import { Link } from "expo-router";
+// import { Link } from "expo-router";
 import { Image } from "expo-image";
 
-const PlaceholderImage = require("@/assets/images-background-Image.png");
+const PlaceholderImage = require("@/assets/images/background-image.png");
 
 function Index() {
   return (
@@ -10,10 +10,10 @@ function Index() {
       <View style={styles.imageContainer}>
         <Image source={PlaceholderImage} style={styles.image}/>
       </View>
-        <Text style={styles.text}>HOME</Text>
-        <Link href="/about" style={styles.button}>         
+        {/* <Text style={styles.text}>HOME</Text> */}
+        {/* <Link href="/about" style={styles.button}>         
           Go to about screen
-        </Link>
+        </Link> */}
       </View>    
   );
 }
@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
     height: 440,
     borderRadius: 18,
   },
-  text: {
-    color: "#fff",
-  },
-  button: {
-    fontSize: 20,
-    textDecorationLine: "underline",
-    color: "#fff",
-  },
+  // text: {
+  //   color: "#fff",
+  // },
+  // button: {
+  //   fontSize: 20,
+  //   textDecorationLine: "underline",
+  //   color: "#fff",
+  // },
  
 });
 
