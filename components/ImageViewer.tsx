@@ -4,7 +4,8 @@ import { Image, type ImageSource } from "expo-image";
 //tipagem typescript
 type Props = {
   imgSource: ImageSource;
-};
+}
+ 
 
 function ImageViewer({ imgSource }: Props) {
   return <Image source={imgSource} style={styles.image} />;
