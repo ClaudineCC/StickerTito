@@ -21,7 +21,7 @@ function Index() {
 
       <View style={styles.footerContainer}> 
         {/* <View> */}
-      <Button label="Choose a photo"/> 
+      <Button label="Choose a photo" theme="primary"/>
       <Button label="Use this photo"/>
       </View>
 

@@ -1,21 +1,47 @@
 import { StyleSheet, View, Pressable, Text } from "react-native"; // componente Pressable ações especificas do celular
+import { FontAwesome } from "@expo/vector-icons";
 
 type Props = {
   // label?: string; // propriedade opcional com uso de ? tipo Key?
   label: string;
+  theme?: "primary";
+//   theme: "primary" |"secundary";
 };
 
+function Button({ label, theme }: Props) {
+  if (theme === "primary") {
+    return (
+      <View
+        style={[
+          (styles.buttonContainer,
+          { borderWidth: 4, borderColor:"#FFD33D", borderRadius: 18 }),
+        ]}
+      >
+        <Pressable 
+        style={[
+        (styles.button, {
+            backgroundColor: "#FFF"}),
+        ]}
+        onPress={() => alert("You pressed a button")}
+        >
 
-function Button ({ label }: Props) {
-  return (
-    <View style={styles.buttonContainer}>
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonLabel}>{label}</Text>
-      </Pressable>
-    </View>
-  );
+          <FontAwesome name="picture-o" size={18} color={'#25292E'}/>
+           <Text style={[styles.buttonLabel, {color: "#25292E"}]}>
+            {label}
+            </Text>
+        </Pressable>
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.buttonContainer}>
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonLabel}>{label}</Text>
+        </Pressable>
+      </View>
+    );
+  }
 }
-
 
 export default Button;
 
@@ -39,5 +65,8 @@ const styles = StyleSheet.create({
   buttonLabel: {
     color: "#fff",
     fontSize: 16,
+  },
+  buttonIcon:{
+    paddingRight: 8,
   },
 });
