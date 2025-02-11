@@ -1,5 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+
 // import { Link } from "expo-router";
 // import { Image } from "expo-image";
 
@@ -11,6 +13,10 @@ const PlaceholderImage = require("@/assets/images/background-image.png");
 
 //refatoração - melhoramento no codigo. OS comentarios sao as primeiras inserções
 function Index() {
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  );
+
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
@@ -19,16 +25,21 @@ function Index() {
     });
 
     if (!result.canceled) {
-      console.log(result);
+      // console.log(result);
+      // tras estado alterado / a const result e assets ImagerPicker./imagePickerAsset[]
+      setSelectedImage(result.assets[0].uri);
     } else {
       alert("You did not select any image");
     }
   };
 
   return (
-    <View style={styles.container} >
+    <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={PlaceholderImage} />
+        <ImageViewer
+          imgSource={PlaceholderImage}
+          selectedImage={selectedImage}
+        />
         {/* <Image source={PlaceholderImage} style={styles.image}/> */}
       </View>
 

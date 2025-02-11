@@ -1,14 +1,22 @@
 import { StyleSheet } from "react-native";
 import { Image, type ImageSource } from "expo-image";
 
-//tipagem typescript
+//tipagem typescript vem como objeto e nao interface
 type Props = {
   imgSource: ImageSource;
+  selectedImage: string | undefined;    //  tras por uri
 }
  
 
-function ImageViewer({ imgSource }: Props) {
-  return <Image source={imgSource} style={styles.image} />;
+function ImageViewer({ imgSource, selectedImage }: Props) {
+  //uso de ternario = condição if/else
+const imageSource = selectedImage ? {uri: selectedImage}: imgSource; 
+
+   return
+    //  <Image source={imgSource} style={styles.image} />;
+
+  // return
+     <Image source={imageSource} style={styles.image} />
 }
 
 const styles = StyleSheet.create({
