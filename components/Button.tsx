@@ -5,30 +5,33 @@ type Props = {
   // label?: string; // propriedade opcional com uso de ? tipo Key?
   label: string;
   theme?: "primary";
-//   theme: "primary" |"secundary";
+  //   theme: "primary" |"secundary";
+  onPress: () => void;
 };
 
-function Button({ label, theme }: Props) {
+function Button({ label, theme,onPress}: Props) {
   if (theme === "primary") {
     return (
       <View
         style={[
           (styles.buttonContainer,
-          { borderWidth: 4, borderColor:"#FFD33D", borderRadius: 18 }),
+          { borderWidth: 4, borderColor: "#FFD33D", borderRadius: 18 }),
         ]}
       >
-        <Pressable 
-        style={[
-        (styles.button, {
-            backgroundColor: "#FFF"}),
-        ]}
-        onPress={() => alert("You pressed a button")}
+        <Pressable
+          style={[
+            (styles.button,   
+                 {backgroundColor: "#FFF", width:320, borderRadius:14}),     
+          ]}
+
+          // onPress={() => alert("You pressed a button")}
+          onPress= {onPress}
         >
 
-          <FontAwesome name="picture-o" size={18} color={'#25292E'}/>
-           <Text style={[styles.buttonLabel, {color: "#25292E"}]}>
+          <FontAwesome name="picture-o" size={18} color={"#25292E"} />
+          <Text style={[styles.buttonLabel, { color: "#25292E" }]}>
             {label}
-            </Text>
+          </Text>
         </Pressable>
       </View>
     );
@@ -58,6 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "100%",
     height: "100%",
+
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
   },
-  buttonIcon:{
+  buttonIcon: {
     paddingRight: 8,
   },
 });
