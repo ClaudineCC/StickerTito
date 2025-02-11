@@ -23,6 +23,10 @@ EXTENSÕES: A Prettier Code-formater - tras regras de formatação
 dependencias para imagem:
  npx expo install expo-image
 
+//dependencia  para consulta imagens no seu celular
+ npx expo install expo-image-picker
+
+
 
 
 
