@@ -8,14 +8,14 @@ import { useState } from "react";
 //import de componentes
 import ImageViewer from "@/components/ImageViewer";
 import Button from "@/components/Button";
+import IconButton from "@/components/IconButton";
+import CircleButton from "@/components/CircleButton";
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
 
 //refatoração - melhoramento no codigo. OS comentarios sao as primeiras inserções
 function Index() {
-  const [selectedImage, setSelectedImage] = useState<string | undefined>(
-    undefined
-  );
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
 
   const pickImageAsync = async () => {
@@ -45,15 +45,23 @@ function Index() {
         {/* <Image source={PlaceholderImage} style={styles.image}/> */}
       </View>
       {showAppOptions ? (
-        <View />
+        <View style={styles.optionContainer}>
+          <View style={styles.optionRow}>
+            <IconButton icon="refresh" label="Reset" onPress={ () => alert('resetar')} />
+            <CircleButton onPress={() => alert('falta colocar funçao')} />     {/*espera uma funçao da props e nao uma string*/} 
+            <IconButton icon="save-alt" label="Save" onPress={() => alert('salvar')} />
+            </View>
+
+        </View>
       ) : (
         <View style={styles.footerContainer}>
           {/* <View> */}
-          <Button
+          <Button 
             label="Choose a photo"
             theme="primary"
             onPress={pickImageAsync}
           />
+
           <Button
             label="Use this photo"
             onPress={() => setShowAppOptions(true)}
@@ -68,6 +76,7 @@ function Index() {
     </View> //container
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -95,6 +104,14 @@ const styles = StyleSheet.create({
   footerContainer: {
     flex: 1 / 3,
     alignItems: "center",
+  },
+  optionContainer:{
+    position: "absolute",
+    bottom:80,
+  },
+  optionRow:{
+    alignItems: "center",
+    flexDirection: "row",
   },
 });
 
