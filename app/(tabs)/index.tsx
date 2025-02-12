@@ -16,6 +16,7 @@ function Index() {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
     undefined
   );
+  const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -28,6 +29,7 @@ function Index() {
       // console.log(result);
       // tras estado alterado / a const result e assets ImagerPicker./imagePickerAsset[]
       setSelectedImage(result.assets[0].uri);
+      setShowAppOptions(true);
     } else {
       alert("You did not select any image");
     }
@@ -42,22 +44,28 @@ function Index() {
         />
         {/* <Image source={PlaceholderImage} style={styles.image}/> */}
       </View>
-
-      <View style={styles.footerContainer}>
-        {/* <View> */}
-        <Button
-          label="Choose a photo"
-          theme="primary"
-          onPress={pickImageAsync}
-        />
-        <Button label="Use this photo" />
-      </View>
-
+      {showAppOptions ? (
+        <View />
+      ) : (
+        <View style={styles.footerContainer}>
+          {/* <View> */}
+          <Button
+            label="Choose a photo"
+            theme="primary"
+            onPress={pickImageAsync}
+          />
+          <Button
+            label="Use this photo"
+            onPress={() => setShowAppOptions(true)}
+          />
+        </View>
+      )}{" "}
+      {/**footer container */}
       {/* <Text style={styles.text}>HOME</Text> */}
       {/* <Link href="/about" style={styles.button}>         
           Go to about screen
         </Link> */}
-    </View>
+    </View> //container
   );
 }
 

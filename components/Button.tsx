@@ -35,10 +35,11 @@ function Button({ label, theme,onPress}: Props) {
         </Pressable>
       </View>
     );
+
   } else {
     return (
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.button}>
+        <Pressable  onPress= {onPress} style={styles.button}>
           <Text style={styles.buttonLabel}>{label}</Text>
         </Pressable>
       </View>
