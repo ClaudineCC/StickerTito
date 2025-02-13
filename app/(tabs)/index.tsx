@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
+import { type ImageSource } from "expo-image";
 
 // import { Link } from "expo-router";
 // import { Image } from "expo-image";
@@ -11,21 +12,24 @@ import Button from "@/components/Button";
 import IconButton from "@/components/IconButton";
 import CircleButton from "@/components/CircleButton";
 import EmojiPicker from "@/components/EmojiPicker";
+import EmojiList
+ from "@/components/EmojiList";
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
+
 
 //refatoração - melhoramento no codigo. OS comentarios sao as primeiras inserções
 function Index() {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);  //onReset
   const [isModelVisible, setIsModelVisible] = useState<boolean>(false);  //onAddSticker
-
+  const [pickedEmoji, setPickedEmoji] =useState<ImageSource |undefined>(undefined)
 
   // ACESSAR A BIBLIOTECA INTERNA DO CELULAR
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
-      allowEditing: true,
+      allowsEditing: true,
       quality: 1,
     });
 
@@ -51,7 +55,7 @@ function Index() {
 
   const onModalClose= () =>{
     setIsModelVisible(false);
-  }
+  };
 
    // iconButton SAVE
   const onSaveImageAsync =()=>{
@@ -96,7 +100,9 @@ function Index() {
         </View>
       )}
       <EmojiPicker isVisible={isModelVisible} onClose={onModalClose} >
-        {/**lista de emojis */}
+        {/*lista de emojis */}
+        <EmojiList onCloseModal={onModalClose} onSelect={setPickedEmoji}/>
+
         </EmojiPicker>
       
       
