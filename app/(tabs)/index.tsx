@@ -2,6 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import { type ImageSource } from "expo-image";
+import { GestureHandlerRootView} from 'react-native-gesture-handler';
 
 // import { Link } from "expo-router";
 // import { Image } from "expo-image";
@@ -12,8 +13,10 @@ import Button from "@/components/Button";
 import IconButton from "@/components/IconButton";
 import CircleButton from "@/components/CircleButton";
 import EmojiPicker from "@/components/EmojiPicker";
-import EmojiList
- from "@/components/EmojiList";
+import EmojiList from "@/components/EmojiList";
+import EmojiSticker from "@/components/EmojiSticker";
+
+
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
 
@@ -25,6 +28,8 @@ function Index() {
   const [isModelVisible, setIsModelVisible] = useState<boolean>(false);  //onAddSticker
   const [pickedEmoji, setPickedEmoji] =useState<ImageSource |undefined>(undefined)
 
+  
+  
   // ACESSAR A BIBLIOTECA INTERNA DO CELULAR
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -63,15 +68,19 @@ function Index() {
   };
 
 
-
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
+    {/* <View style={styles.container}> */}
       <View style={styles.imageContainer}>
         <ImageViewer
           imgSource={PlaceholderImage}
           selectedImage={selectedImage}
         />
         {/* <Image source={PlaceholderImage} style={styles.image}/> */}
+
+      {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji}/>}
+
+
       </View>
       {showAppOptions ? (
         <View style={styles.optionContainer}>
@@ -112,7 +121,7 @@ function Index() {
       {/* <Link href="/about" style={styles.button}>         
           Go to about screen
         </Link> */}
-    </View> //container
+    </GestureHandlerRootView> //container
   );
 }
 
