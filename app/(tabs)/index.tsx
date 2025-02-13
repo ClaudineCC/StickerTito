@@ -10,13 +10,15 @@ import ImageViewer from "@/components/ImageViewer";
 import Button from "@/components/Button";
 import IconButton from "@/components/IconButton";
 import CircleButton from "@/components/CircleButton";
+import EmojiPicker from "@/components/EmojiPicker";
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
 
 //refatoração - melhoramento no codigo. OS comentarios sao as primeiras inserções
 function Index() {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
-  const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
+  const [showAppOptions, setShowAppOptions] = useState<boolean>(false);  //onReset
+  const [isModelVisible, setIsModelVisible] = useState<boolean>(false);  //onAddSticker
 
 
   // ACESSAR A BIBLIOTECA INTERNA DO CELULAR
@@ -44,8 +46,12 @@ function Index() {
 
   // circle button ADICIONAR OS EMOJIS  
   const onAddSticker = ()=>{
-
+    setIsModelVisible(true);
   };
+
+  const onModalClose= () =>{
+    setIsModelVisible(false);
+  }
 
    // iconButton SAVE
   const onSaveImageAsync =()=>{
@@ -88,7 +94,13 @@ function Index() {
             onPress={() => setShowAppOptions(true)}
           />
         </View>
-      )}{" "}
+      )}
+      <EmojiPicker isVisible={isModelVisible} onClose={onModalClose} >
+        {/**lista de emojis */}
+        </EmojiPicker>
+      
+      
+      {/* {" "} */}
       {/**footer container */}
       {/* <Text style={styles.text}>HOME</Text> */}
       {/* <Link href="/about" style={styles.button}>         

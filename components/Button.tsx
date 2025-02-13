@@ -9,7 +9,7 @@ type Props = {
   onPress: () => void;
 };
 
-function Button({ label, theme,onPress}: Props) {
+function Button({ label, theme, onPress}: Props) {
   if (theme === "primary") {
     return (
       <View
@@ -23,11 +23,9 @@ function Button({ label, theme,onPress}: Props) {
             (styles.button,   
                  {backgroundColor: "#FFF", width:320, borderRadius:14}),     
           ]}
-
           // onPress={() => alert("You pressed a button")}
           onPress= {onPress}
         >
-
           <FontAwesome name="picture-o" size={18} color={"#25292E"} />
           <Text style={[styles.buttonLabel, { color: "#25292E" }]}>
             {label}
