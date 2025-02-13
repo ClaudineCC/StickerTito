@@ -18,6 +18,8 @@ function Index() {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
 
+
+  // ACESSAR A BIBLIOTECA INTERNA DO CELULAR
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
@@ -35,6 +37,23 @@ function Index() {
     }
   };
 
+  // iconButton RESET
+  const onReset =()=>{
+    setShowAppOptions(false);
+  };
+
+  // circle button ADICIONAR OS EMOJIS  
+  const onAddSticker = ()=>{
+
+  };
+
+   // iconButton SAVE
+  const onSaveImageAsync =()=>{
+
+  };
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -47,9 +66,11 @@ function Index() {
       {showAppOptions ? (
         <View style={styles.optionContainer}>
           <View style={styles.optionRow}>
-            <IconButton icon="refresh" label="Reset" onPress={ () => alert('resetar')} />
-            <CircleButton onPress={() => alert('falta colocar funçao')} />     {/*espera uma funçao da props e nao uma string*/} 
-            <IconButton icon="save-alt" label="Save" onPress={() => alert('salvar')} />
+            <IconButton icon="refresh" label="Reset" onPress={onReset} />
+            {/* <CircleButton onPress={() => alert('falta colocar funçao')} />     espera uma funçao da props e nao uma string  */}
+            <CircleButton onPress={onAddSticker} />
+            {/* <IconButton icon="save-alt" label="Save" onPress={() => alert('salvar')} /> */}
+            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
             </View>
 
         </View>
